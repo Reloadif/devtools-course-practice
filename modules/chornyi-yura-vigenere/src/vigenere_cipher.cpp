@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-bool checkString(const std::string str) {
+bool checkString(const std::string& str) {
     for (auto element : str) {
         if (element < 65 || element > 90) return false;
     }
