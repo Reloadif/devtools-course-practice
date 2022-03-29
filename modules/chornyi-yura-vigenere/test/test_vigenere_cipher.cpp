@@ -1,8 +1,9 @@
 // Copyright 2022 Chornyi Yura
 
 #include <gtest/gtest.h>
-
 #include <tuple>
+#include <string>
+
 #include "include/vigenere_cipher.h"
 
 TEST(Constructor, ConstructorWithoutParameters) {

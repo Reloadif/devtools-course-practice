@@ -1,6 +1,7 @@
 // Copyright 2022 Chornyi Yura
 
 #include <iostream>
+#include <string>
 
 #include "include/vigenere_cipher.h"
 
@@ -16,8 +17,8 @@ int main(int argc, const char** argv) {
 
         std::cout << cipher;
     }
-    catch (const std::exception& e) {
-        std::cout << e.what();
+    catch (...) {
+        std::cout << "Exception";
     }
 
     return 0;
