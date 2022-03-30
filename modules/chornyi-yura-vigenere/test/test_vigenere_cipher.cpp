@@ -18,7 +18,7 @@ TEST(VigenereCipherConstructor, ConstructorWithTwoParametersNotEqualSize) {
     ASSERT_ANY_THROW(VigenereCipher("TEST", ""));
 }
 
-TEST(VigenereCipherConstructor, ConstructorWithTwoParametersWithNotAllowedCharacter) {
+TEST(VigenereCipherConstructor, ConstructorWithTwoParametersWithNotAllowChar) {
     ASSERT_ANY_THROW(VigenereCipher("TE12", "QW12"));
 }
 
