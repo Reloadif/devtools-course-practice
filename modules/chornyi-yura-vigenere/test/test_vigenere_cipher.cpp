@@ -6,37 +6,37 @@
 
 #include "include/vigenere_cipher.h"
 
-TEST(Constructor, ConstructorWithoutParameters) {
+TEST(VigenereCipherConstructor, ConstructorWithoutParameters) {
     ASSERT_NO_THROW(VigenereCipher());
 }
 
-TEST(Constructor, ConstructorWithTwoParameters) {
+TEST(VigenereCipherConstructor, ConstructorWithTwoParameters) {
     ASSERT_NO_THROW(VigenereCipher("TEST", "QWER"));
 }
 
-TEST(Constructor, ConstructorWithTwoParametersNotEqualSize) {
+TEST(VigenereCipherConstructor, ConstructorWithTwoParametersNotEqualSize) {
     ASSERT_ANY_THROW(VigenereCipher("TEST", ""));
 }
 
-TEST(Constructor, ConstructorWithTwoParametersWithNotAllowedCharacter) {
+TEST(VigenereCipherConstructor, ConstructorWithTwoParametersWithNotAllowedCharacter) {
     ASSERT_ANY_THROW(VigenereCipher("TE12", "QW12"));
 }
 
-TEST(Methods, CheckDefaultValue) {
+TEST(VigenereCipherMethods, CheckDefaultValue) {
     VigenereCipher v;
 
     ASSERT_EQ(v.getOriginal(), "");
     ASSERT_EQ(v.getKey(), "");
 }
 
-TEST(Methods, CheckCustomValue) {
+TEST(VigenereCipherMethods, CheckCustomValue) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_EQ(v.getOriginal(), "TEST");
     ASSERT_EQ(v.getKey(), "QWER");
 }
 
-TEST(Methods, CheckCipheringWithoutParameters) {
+TEST(VigenereCipherMethods, CheckCipheringWithoutParameters) {
     VigenereCipher v;
 
     std::string cipher = v.cipher();
@@ -44,7 +44,7 @@ TEST(Methods, CheckCipheringWithoutParameters) {
     ASSERT_EQ(cipher, "");
 }
 
-TEST(Methods, CheckCipheringWithParameters) {
+TEST(VigenereCipherMethods, CheckCipheringWithParameters) {
     VigenereCipher v("ATTACKATDAWN", "LEMONLEMONLE");
 
     std::string cipher = v.cipher();
@@ -52,7 +52,7 @@ TEST(Methods, CheckCipheringWithParameters) {
     ASSERT_EQ(cipher, "LXFOPVEFRNHR");
 }
 
-TEST(Methods, CheckSetOriginalEqualKey) {
+TEST(VigenereCipherMethods, CheckSetOriginalEqualKey) {
     VigenereCipher v("TEST", "QWER");
 
     v.setOriginal("QQQQ");
@@ -60,19 +60,19 @@ TEST(Methods, CheckSetOriginalEqualKey) {
     ASSERT_EQ(v.getOriginal(), "QQQQ");
 }
 
-TEST(Methods, CheckSetOriginalNotEqualKey) {
+TEST(VigenereCipherMethods, CheckSetOriginalNotEqualKey) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setOriginal("T"));
 }
 
-TEST(Methods, CheckSetOriginalWithNotAllowedCharacter) {
+TEST(VigenereCipherMethods, CheckSetOriginalWithNotAllowedCharacter) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setOriginal("TE12"));
 }
 
-TEST(Methods, CheckSetKeyEqualOriginal) {
+TEST(VigenereCipherMethods, CheckSetKeyEqualOriginal) {
     VigenereCipher v("TEST", "QWER");
 
     v.setKey("QQQQ");
@@ -80,19 +80,19 @@ TEST(Methods, CheckSetKeyEqualOriginal) {
     ASSERT_EQ(v.getKey(), "QQQQ");
 }
 
-TEST(Methods, CheckSetKeyNotEqualOriginal) {
+TEST(VigenereCipherMethods, CheckSetKeyNotEqualOriginal) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setKey("Q"));
 }
 
-TEST(Methods, CheckSetKeyWithNotAllowedCharacter) {
+TEST(VigenereCipherMethods, CheckSetKeyWithNotAllowedCharacter) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setOriginal("QW12"));
 }
 
-TEST(Methods, CheckSetPairWithEqualSize) {
+TEST(VigenereCipherMethods, CheckSetPairWithEqualSize) {
     VigenereCipher v("TEST", "QWER");
 
     v.setPair("QWER", "TEST");
@@ -101,13 +101,13 @@ TEST(Methods, CheckSetPairWithEqualSize) {
     ASSERT_EQ(v.getKey(), "TEST");
 }
 
-TEST(Methods, CheckSetPairWithoutEqualSize) {
+TEST(VigenereCipherMethods, CheckSetPairWithoutEqualSize) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setPair("TEST", "Q"));
 }
 
-TEST(Methods, CheckSetPairWithNotAllowedCharacter) {
+TEST(VigenereCipherMethods, CheckSetPairWithNotAllowedCharacter) {
     VigenereCipher v("TEST", "QWER");
 
     ASSERT_ANY_THROW(v.setPair("TE12", "QW12"));

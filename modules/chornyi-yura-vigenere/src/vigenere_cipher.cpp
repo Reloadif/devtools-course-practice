@@ -5,9 +5,13 @@
 #include <string>
 #include <sstream>
 
+const char firstLetter = 'A';
+const char lastLetter = 'Z';
+const char numberAlpabet = 26;
+
 bool checkString(const std::string& str) {
     for (auto element : str) {
-        if (element < 65 || element > 90) return false;
+        if (element < firstLetter || element > lastLetter) return false;
     }
 
     return true;
@@ -57,7 +61,8 @@ std::string VigenereCipher::cipher() const {
     std::stringstream cipher;
 
     for (std::string::size_type it = 0; it < m_original.size(); ++it) {
-        cipher << static_cast<char>(65 + (m_original[it] + m_key[it]) % 26);
+        cipher << static_cast<char>(firstLetter + (m_original[it] +
+                                    m_key[it]) % numberAlpabet);
     }
 
     return cipher.str();
