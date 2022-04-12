@@ -3,7 +3,7 @@
 #include "include/binary_tree_application.h"
 #include "include/binary_tree.h"
 
-#include <string.h> 
+#include <string.h>
 #include <sstream>
 #include <string>
 #include <vector>
